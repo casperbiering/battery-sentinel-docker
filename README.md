@@ -6,7 +6,7 @@ Automated multi-arch Docker image builds of [smcneece/battery-sentinel](https://
 
 | Registry | Image | Tags |
 |----------|-------|------|
-| GHCR | `ghcr.io/casperbiering/battery-sentinel` | [View](https://github.com/casperbiering/battery-sentinel-docker/pkgs/container/battery-sentinel/versions) |
+| GHCR | `ghcr.io/casperbiering/battery-sentinel` | [View](https://github.com/casperbiering/battery-sentinel-docker/pkgs/container/battery-sentinel/versions?filters%5Bversion_type%5D=tagged) |
 
 Available tags:
 - `<version>` — matches the upstream git tag
@@ -19,7 +19,7 @@ Supported platforms: `linux/amd64`, `linux/arm64`
 A GitHub Actions workflow runs daily and:
 
 1. Polls the upstream repo for tags created within the last 7 days
-2. Checks GHCR via `skopeo` to skip tags that have already been pushed
+2. Checks GHCR via an authenticated Docker manifest lookup to skip tags that have already been pushed
 3. Builds the `addon/` directory from each unbuilt tag using `docker/build-push-action`
 4. Pushes the image with both the version tag and `latest`
 
