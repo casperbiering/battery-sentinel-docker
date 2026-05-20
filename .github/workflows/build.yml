@@ -203,8 +203,8 @@ jobs:
         with:
           context: _upstream/addon
           platforms: linux/amd64,linux/arm64
-          push: true
           tags: ${{ steps.docker-tags.outputs.tags }}
+          outputs: type=image,push=true,compression=gzip,force-compression=true
           cache-from: type=gha,scope=battery-sentinel
           cache-to: type=gha,scope=battery-sentinel,mode=max
           provenance: false
