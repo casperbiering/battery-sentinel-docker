@@ -18,7 +18,7 @@ Supported platforms: `linux/amd64`, `linux/arm64`
 
 A GitHub Actions workflow runs daily and:
 
-1. Polls the upstream repo for tags created within the last 7 days
+1. Polls the upstream repo for recent tags within the last 7 days
 2. Checks GHCR via an authenticated Docker manifest lookup to skip tags that have already been pushed
 3. Builds the `addon/` directory from each unbuilt tag using `docker/build-push-action`
 4. Pushes the image with both the version tag and `latest`
