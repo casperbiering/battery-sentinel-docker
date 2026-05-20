@@ -88,9 +88,14 @@ jobs:
             echo "No new tags to build."
           fi
 
-          JSON_ARRAY=$(echo "$TAGS_TO_BUILD" | jq -R -s -c 'split("\n") | map(select(length > 0))')
-          echo "tags=${JSON_ARRAY}" >> "$GITHUB_OUTPUT"
-          echo "has_tags=$([ "$JSON_ARRAY" != "[]" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          JSON_ARRAY=$(printf '%s' "$TAGS_TO_BUILD" | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          HAS_TAGS=$(echo "$JSON_ARRAY" | jq 'length > 0')
+          {
+            echo "tags<<EOF"
+            echo "$JSON_ARRAY"
+            echo "EOF"
+            echo "has_tags=${HAS_TAGS}"
+          } >> "$GITHUB_OUTPUT"
 
   build:
     needs: [detect]
