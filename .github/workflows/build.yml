@@ -15,19 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  randomize-time:
-    if: github.event_name == 'schedule'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Random delay 0-8 hours
-        run: |
-          DELAY=$((RANDOM % 28800))
-          echo "Sleeping ${DELAY}s to randomize run time..."
-          sleep "$DELAY"
-
   detect:
-    needs: [randomize-time]
-    if: always() && (needs.randomize-time.result == 'success' || needs.randomize-time.result == 'skipped')
     runs-on: ubuntu-latest
     outputs:
       tags: ${{ steps.detect.outputs.tags }}

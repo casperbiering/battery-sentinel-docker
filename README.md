@@ -16,7 +16,7 @@ Supported platforms: `linux/amd64`, `linux/arm64`
 
 ## How it works
 
-A GitHub Actions workflow runs daily at a randomized time and:
+A GitHub Actions workflow runs daily and:
 
 1. Polls the upstream repo for tags created within the last 7 days
 2. Checks GHCR via `skopeo` to skip tags that have already been pushed
