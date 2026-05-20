@@ -4,9 +4,9 @@ Automated multi-arch Docker image builds of [smcneece/battery-sentinel](https://
 
 ## Images
 
-| Registry | Image |
-|----------|-------|
-| GHCR | `ghcr.io/<owner>/battery-sentinel` |
+| Registry | Image | Tags |
+|----------|-------|------|
+| GHCR | `ghcr.io/casperbiering/battery-sentinel` | [View](https://github.com/casperbiering/battery-sentinel-docker/pkgs/container/battery-sentinel/versions) |
 
 Available tags:
 - `<version>` — matches the upstream git tag
